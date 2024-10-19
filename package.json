@@ -1,20 +1,49 @@
 {
-  "name": "my-storybook",
-  "private": true,
-  "version": "0.0.0",
+  "name": "nj10-custom-components",
+  "private": false,
+  "version": "0.0.1-rc4",
   "type": "module",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "dev",
+    "Jose",
+    "Nieto",
+    "testing"
+  ],
+  "license": "MIT",
+  "homepage": "https://nietojose.com",
+  "repository": {
+    "url": "https://github.com/nietojose10/nj10-custom-components",
+    "type": "git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
     "dev": "npm run storybook",
-    "build": "tsc -b && vite build",
+    "build": "npm run clean && tsc -b && npm run copyfiles",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_3459826de1d45f5"
-  },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "chromatic": "npx chromatic --project-token=chpt_3459826de1d45f5",
+    "clean": "rimraf dist/",
+    "copyfiles": "copyfiles -u 1 src/**/*.css dist/",
+    "push:npm": "np"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
@@ -36,6 +65,10 @@
     "eslint-plugin-react-refresh": "^0.4.12",
     "eslint-plugin-storybook": "^0.9.0",
     "globals": "^15.9.0",
+    "np": "^10.0.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1",
     "storybook": "^8.3.6",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
